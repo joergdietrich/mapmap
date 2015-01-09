@@ -1,0 +1,6 @@
+Mapmap uses GNU autotools. Only manually edited files are placed under
+version control. Upon initial checkout you need to run
+
+$ autoreconf -i
+
+once to generate the configure script etc.
