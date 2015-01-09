@@ -59,7 +59,17 @@ Library (gsl) with CBLAS extension. Compilation is done with the usual
 make
 make install
 
+Efficient use of parallel processing via OpenMP can be enable during
+the configure step with the option --enable-openmp.
 
-$Id: README,v 1.2 2006/10/05 12:04:24 jdietric Exp $
+Some machines (notably massive shared ememory Altix) do not maintain
+cache coherence without further instructions by the user. In this case
+attaching subprocesses explicitly to a CPU helps. This can be enabled
+with the Portable Linux Processor Affinity package included in the
+distribution. It is turned off by default because it decreases
+performance on most systems but can be enabled with the configuration
+switch --enable-plpa.
+
+
 
 
