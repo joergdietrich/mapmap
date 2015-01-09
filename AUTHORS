@@ -1,0 +1,9 @@
+mapmap was written by Joerg Dietrich <jdietric@eso.org>. Copyright 2005-2006.
+Loosely based on a FORTRAN program by Peter Schneider.
+
+getaline.c was written by Larz Wirzenius
+Copyright(C) 1994 Larz Wirzenius.
+
+The preferences/configuration file mechanism was written by Emmanuel
+Bertin for TERAPIX software. Copyright Emmanuel Bertin.
+

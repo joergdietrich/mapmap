@@ -1,0 +1,65 @@
+README for mapmap
+-----------------
+
+mapmap creates maps of aperture mass (M_ap, Schneider 1996). It takes
+a FITS_LDAC catalog as input and produces FITS images of aperture mass
+maps ("mapmaps") and fits cubes of tomographic peak maps (Hennawi &
+Spergel 2005). Optionally it also produces maps of M_ap significance
+computed analytically following Eq. 13 of Schirmer et al. (2006,
+astro-ph/0607022), maps of -M_ap, mapmaps of the cross-component of
+the shear, and mapmaps for a randomized input catalog. For the latter
+option the random seed is hardwired to a constant in the program.
+
+The input catalog must at least provide columns with (1) right
+ascencion, (2) declination, (3) 1-component of the shear, and (4)
+2-component of the shear. Optionally a fifth column can be used to
+assign weights to individual shear estimators. Note that although the
+positions are expected in right ascencion and declination, the program
+expects shear values measured in a Cartesian frame with the values of
+the 1-axis increasing from left to right. The table and column names
+in the input catalog can be configured via command line options or the
+configuration file.
+
+Two filter functions are built in: The polynomial filter of Schneider
+et al. (1998, option SCHNEIDER) and the truncated pseudo-NFW filter of
+Schirmer et al. (2006, filter SCHIRMER). Different filter functions
+can be read from a file (option FILE). The filter radius is set by
+assuming a fiducial cluster model and specifying the redshift of the
+model cluster and its radius in kpc. 
+
+The size of the output grid is determined by the physical scale at the
+redshift of the fiducial model. The default is that one pixel
+corresponds to 50 kpc at the model redshift (default 0.3).
+
+mapmap is configured via a SExtractor style configuration file or
+command line options. mapmap -c conf_file specifies the location of
+the configuration file. If the -c option is not provided mapmap tries
+to read mapmap_default.conf in the current working directory. If that
+is not found internal default values are used. mapmap -d prints the
+internal defaults in the format of the configuration file.
+
+
+
+Limitations
+-----------
+
+mapmap computes a very simple transformation from equatorial to pixel
+coordinates. It will probably fail for very large areas (never tested)
+and will definitely fail at the 24h -> 0h transition in right
+ascencion and at the poles.
+
+
+Compilation
+-----------
+
+Compilation of mapmap requires the cfitsio library, the GNU Scientific
+Library (gsl) with CBLAS extension. Compilation is done with the usual
+
+./configure
+make
+make install
+
+
+$Id: README,v 1.2 2006/10/05 12:04:24 jdietric Exp $
+
+
